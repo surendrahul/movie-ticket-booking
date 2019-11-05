@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>date test</title>
+	<style type="text/css">
+		.clickButton{
+			color:red;
+			background-color: white;
+			padding: 5px;
+			margin: 5px;
+		}
+		.clickButton:hover{
+			color:white;
+			background-color: red;
+		}
+
+	</style>
+</head>
+<body onload="myDateFunction()">
+	<form>
+		<input type="date" name="" min="2018-11-12" max="2018-12-05">
+		<input type="date" id=cal name="date" >
+		<input type="button" name="" value=click id=clickButton1 class="clickButton" onclick="myClickFunction(this)">
+		<input type="button" name="" value=click id=clickButton2 class="clickButton"  onclick="myClickFunction(this)">
+		<input type="button" name="" value=click id=clickButton3 class="clickButton"  onclick="myClickFunction(this)">
+	</form>
+</body>
+	<script type="text/javascript">
+		function myDateFunction() {
+			var start=new Date();
+			var end=new Date();
+			console.log("start day today "+start);
+			var startDay=start.getDate();
+			var startMonth=start.getMonth()+1;
+			var startYear=start.getFullYear();
+			end.setDate(start.getDate()+8);
+			var endDay=end.getDate();
+			var endMonth=end.getMonth()+1;
+			var endYear=end.getFullYear();
+
+			var newStart=startYear+"-"+startMonth+"-"+startDay;
+			var newEnd=endYear+"-"+endMonth+"-"+endDay;
+			console.log(newStart);
+			console.log(newEnd);
+			var a=document.getElementById('cal');
+			a.setAttribute("min",newStart);
+			a.setAttribute("max", newEnd);
+		}
+		function myClickFunction(a){
+			console.log(a);
+			var myId=a.id;
+			var myClass=a.class;
+			console.log(myId+"  "+myClass);
+			//document.getElementsByClassName('clickButton').style.backgroundColor="blue";
+			//console.log(document.getElementsByClassName('clickBut').innerHTML);
+			for(var i=0; i<3; i++){
+				document.getElementsByClassName('clickButton')[i].style.backgroundColor="blue";
+			}
+			
+			document.getElementById(myId).style.backgroundColor="green";
+		}
+	</script>
+</html>
